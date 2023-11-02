@@ -1,0 +1,100 @@
+{% extends './list.html' %}
+
+   {% load static %}
+
+    {% block styles %}
+    <link rel="stylesheet" href="{% static './index.css' %}"> 
+    {% endblock %}
+
+    {% block body %}
+    {% endblock %}
+
+{% block bodyone %}
+
+    <div class="container">
+        <div class="music-player">
+        <div class="music-player-content">
+            <div class="cover">
+                <img src="{{song.image.url}}" alt="Album Cover">
+            </div>
+            <div class="music-controls">
+                <form action="previous" method="post">
+                    {% csrf_token %}
+                <button class="control-button" name="prev" value="{{ song.title }}">&#9668;</button>
+                <input type="hidden" name="decider" value="{{ home2 }}" >
+                <input type="hidden" name="artist" value="{{ song.artist }}">
+                <input type="hidden" name="songid" value="{{ song.id }}">
+               </form>
+
+                <!-- <button class="control-button" id="mybutton" onClick="togglePlay()"></button> -->
+                <input style="width: 76px; margin: 0 12px; height: 45px;" class="control-button" id="mybutton" onClick="togglePlay()" value="play" type="submit">
+
+                <form action="next" method="post">
+                    {% csrf_token %}
+                <button class="control-button" name="next" value="{{ song.title }}">&#9654;</button>
+                <input type="hidden" name="decider" value="{{ home2 }}" >
+                <input type="hidden" name="artist" value="{{ song.artist }}">
+                <input type="hidden" name="songid" value="{{ song.id }}">
+            </form>
+            </div><br>
+            <div class="music-details">
+                <h2 class="music-title"> {{song.title}}</h2>
+                <p class="music-artist"> {{song.artist}}</p>
+            </div>
+            <center><a id='none' href='' style="text-decoration: none;color: #3DB2FF">{{ home2 }}</a></center>
+        </div><br>
+        <center>
+        <audio id="buzzer" controls class="audio-player" style="background-color: transparent;">
+            <source src="{% if song.audio_file %}{{song.audio_file.url}} {% else %} {{song.audio_link}} {% endif %}" type="audio/mp3">
+        </audio>
+        </center>
+
+    </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script>
+        
+        $(document).ready(function(){
+        const username = "{{ home2|escapejs }}";
+        const artist = "{{ song.artist|escapejs }}";
+        if (username == 'Home'){
+            $('#none').attr("href","{% url 'potatoapp:index' %}");
+        }
+        else {
+            $('#none').attr("href",'artist/{{ song.id }}');
+        }
+    });
+
+    </script>
+
+    <script>
+    $(document).ready(function(){
+      $("#mybutton").click(function(){
+        $(this).val($(this).val() == 'play' ? 'pause' : 'play');
+      });
+    });
+    </script>
+
+    <script>
+
+        var buzzer = document.getElementById("buzzer");
+        var isPlaying = false;
+
+        function togglePlay() {
+        isPlaying ? buzzer.pause() : buzzer.play();
+        };
+
+        buzzer.onplaying = function() {
+        isPlaying = true;
+        };
+        buzzer.onpause = function() {
+        isPlaying = false;
+        };
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    {% endblock %}
+    {% block footer %}
+    {% endblock %}

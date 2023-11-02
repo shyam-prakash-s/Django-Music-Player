@@ -1,0 +1,89 @@
+
+body {
+    background-image: url('crystal.jpg') ;
+    background-size: cover;
+    background-repeat: repeat;
+    /*background-size: 510px 510px; */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+#carouselExampleCaptions{
+    background-color: #333;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+#playbutton{
+    padding: 10px 20px;
+    display: block;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    font-family: FontAwesome;
+    font-size: 25px;
+    color: #3085C3;
+    background: transparent;
+    margin-left: 10px;
+    text-align: center;
+    border: none;
+    display: inline;
+    }
+
+.music-list {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+
+h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.music-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+.music-item img {
+    width: 100px;
+    height: 80px;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.music-details {
+    flex-grow: 1;
+    text-align: justify;
+}
+
+h2 {
+    font-size: 18px;
+    color: #333;
+    margin: 0;
+}
+
+p {
+    color: #777;
+    margin: 5px 0;
+}
+
+span {
+    color: #555;
+}

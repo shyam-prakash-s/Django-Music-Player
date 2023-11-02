@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Potato Fry Login</title>
+    <link rel="stylesheet" href="{% static './styles.css' %}"> 
+</head>
+<body>  
+    {% block body %}
+    <div class="container">
+        <div class="login-box">
+            <p style="display:inline">Welcome to</p>
+            <h1 style="display: inline-block;">PotatoFry. </h1>
+            <p style="display: inline-block;"> music player</p>
+            <form action="#" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <p></p>
+            <input type="submit" value="Login" style="background-color: transparent; height: 25px; width: 80px; border-radius: 6px;"><br><br>
+            <a href="{% url 'potatoapp:reset'%}" ><I>Forgot Password?</I></a>
+            <br>
+            <a href="{% url 'potatoapp:signup'%}" ><I>New User</I></a>
+            {{errmsg}} 
+        </div>
+    </div>
+
+    {% endblock %}
+</body>
+</html>

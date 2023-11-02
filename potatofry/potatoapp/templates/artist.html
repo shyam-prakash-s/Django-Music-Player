@@ -1,0 +1,44 @@
+{% extends './list.html' %}
+
+{% block body %}
+
+<style>
+
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: white;
+        text-align: center;
+        height: 55px;
+      }
+    </style>
+
+{% endblock %}
+{% block bodyone %}
+{% endblock %}
+{% block title %}
+<a href="{% url 'potatoapp:index'%}" style="text-decoration: none; color: black;"><h1>playlist</h1></a>
+<br>
+{% endblock %}
+{% block form %}
+
+<form action="{% url 'potatoapp:home' %}" method="post">
+    <span style="display: inline-block;">{{item.duration}}</span>
+        {% csrf_token %}
+         
+        <input type="hidden" value="{{ item.title }}" name="search"> 
+        <input type="hidden" name="data" value="artist">
+       
+        <input  id="playbutton" style="border: none;font-size: 20px; margin-left: 0; width: 150px; font-family:  FontAwesome;" type="submit" value=" &#9654; Listen Now" name="">
+    </form>
+{% endblock %}
+
+{% block foot %}
+
+<div class="footer" ><p></p>
+    <p><a style="text-decoration: none; color: black;" href="{% url 'potatoapp:index' %}">Home</a></p>
+</div>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+
+{% extends './login.html' %}
+    
+    {% block body %}
+    <div class="container">
+    <div class="login-box">
+    <form method="POST" >
+        {% csrf_token %}
+        {{form.as_p}}
+        <label style="display: inline;">Email iD : </label> <input style="display: inline; height: 30px; width: 300px;" type="email" name="email" placeholder="  Enter your email here"><br><br>
+        <input type="submit" value="Signup" style="background-color: transparent; height: 25px; width: 80px; border-radius: 6px;">
+    </form>
+    </div>
+
+{% endblock %}

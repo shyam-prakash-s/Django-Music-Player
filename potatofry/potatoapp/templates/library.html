@@ -1,0 +1,32 @@
+{% extends './list.html' %}
+
+{% block body %}
+
+<style>
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    height: 55px;
+  }
+</style>
+
+{% endblock %}
+{% block bodyone %}
+{% endblock %}
+{% block title %}
+<a href="{% url 'potatoapp:index'%}" style="text-decoration: none;color: black;"><h1>your library</h1></a>
+<br>
+{% endblock %}
+
+{% block foot %}
+
+<div class="footer" ><p></p>
+    <p><a style="text-decoration: none; color: black;" href="{% url 'potatoapp:index' %}">Home</a></p>
+</div>
+
+{% endblock %}
